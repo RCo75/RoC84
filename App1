@@ -1,0 +1,104 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(NECookApp());
+}
+
+class NECookApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'NECook',
+      theme: ThemeData(
+        primarySwatch: Colors.blue, // Choose your desired color theme
+      ),
+      home: NECookHomePage(),
+    );
+  }
+}
+
+class NECookHomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('NECook'),
+        actions: [
+          Container(
+            width: MediaQuery.of(context).size.width * 2 / 3,
+            alignment: Alignment.centerRight,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                CircleAvatar(
+                  backgroundImage: AssetImage('path_to_membership_picture'), // Replace with your membership picture
+                ),
+                SizedBox(width: 16),
+                Image.asset(
+                  'path_to_logo', // Replace with your logo image
+                  width: 100,
+                  height: 100,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Welcome to NECook',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 16),
+            Text(
+              'We want meal times to be adventurous for Any Cook. Spin the wheel to discover new delights from around the Globe, or simply shake your fridge for a great meal (our Eco friendly choice). Lack an ingredient? No problem. We have links for you to add to shopping baskets in your favourite stores, for click and collect or delivery. The world of flavour in your palm.',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(height: 24),
+            Text(
+              'I want to:',
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            DropdownButton<String>(
+              items: [
+                DropdownMenuItem<String>(
+                  value: 'shake_fridge',
+                  child: Text('Shake the Fridge'),
+                ),
+                DropdownMenuItem<String>(
+                  value: 'get_adventurous',
+                  child: Text('Get Adventurous'),
+                ),
+              ],
+              onChanged: (value) {
+                // Handle dropdown selection
+              },
+              value: null, // Set the default value here
+            ),
+            SizedBox(height: 16),
+            Row(
+              children: [
+                Icon(Icons.camera),
+                SizedBox(width: 8),
+                Text('What I have'),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
